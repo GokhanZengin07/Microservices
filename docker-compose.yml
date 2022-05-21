@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  s_apigateway:
+    container_name: c_apigateway
+    image: gokhanzengin/apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    networks:
+      - net_api
+      - int_net_api
+    ports:
+      - 80:80
+
+  s_contact_api:
+    container_name: c_contact_api
+    image: gokhanzengin/contactapi
+    build:
+      context: .
+      dockerfile: Services/Contact.API/Contact.API/Dockerfile
+    networks:
+      - int_net_api
+    ports:
+      - 9000:9000
+
+  s_res_api:
+    container_name: c_res_api
+    image: gokhanzengin/resapi
+    build:
+      context: .
+      dockerfile: Services/Reservation.API/Reservation.API/Dockerfile
+    networks:
+      - int_net_api
+    ports:
+      - 9001:9001
+
+
+networks:
+  net_api:
+    driver: bridge
+
+  int_net_api:
+    driver: overlay
+    internal: true

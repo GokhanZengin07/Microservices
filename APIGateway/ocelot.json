@@ -3,8 +3,8 @@
     {
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44370
+          "Host": "c_res_api",
+          "Port": 9001
         }
       ],
       "DownstreamPathTemplate": "/api/res/{id}",
@@ -15,8 +15,8 @@
     {
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44390
+          "Host": "c_contact_api",
+          "Port": 9000
         }
       ],
       "DownstreamPathTemplate": "/api/contact/{id}",
